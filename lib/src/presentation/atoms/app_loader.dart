@@ -6,8 +6,8 @@ import '../../core/extensions/context_extensions.dart';
 class AppLoader extends StatelessWidget {
   const AppLoader({
     super.key,
-    this.size = 18,
-    this.strokeWidth = 2,
+    this.size = 24,
+    this.strokeWidth = 3,
     this.color,
   });
 

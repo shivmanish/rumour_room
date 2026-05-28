@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../../core/network/codecs.dart';
 import '../../domain/entities/message_entity.dart';
 
 /// Firestore JSON ↔ [MessageEntity]. `sentAt` tolerates null while the
-/// serverTimestamp sentinel is pending. `_id` and `_hasPendingWrites`
-/// are injected by [FirebaseFirestoreClient].
+/// serverTimestamp sentinel is pending. `_id`, `_hasPendingWrites`, and
+/// the Timestamp→DateTime conversion are handled by [FirebaseFirestoreClient].
 class MessageModel extends MessageEntity {
   const MessageModel({
     required super.id,
@@ -22,7 +20,7 @@ class MessageModel extends MessageEntity {
       text: (json['text'] as String?) ?? '',
       authorId: (json['authorId'] as String?) ?? '',
       authorUsername: (json['authorUsername'] as String?) ?? 'anon',
-      sentAt: (json['sentAt'] as Timestamp?)?.toDate(),
+      sentAt: json['sentAt'] as DateTime?,
       isPending: (json['_hasPendingWrites'] as bool?) ?? false,
     );
   }

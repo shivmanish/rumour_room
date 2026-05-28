@@ -28,7 +28,8 @@ class IdentityRevealOverlay extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Spacer(flex: 3),
+              // push the card + CTA to the bottom as a pair
+              const Spacer(),
               Container(
                 padding: const EdgeInsets.fromLTRB(24, 28, 24, 28),
                 decoration: BoxDecoration(
@@ -54,7 +55,7 @@ class IdentityRevealOverlay extends StatelessWidget {
                   ],
                 ),
               ),
-              const Spacer(flex: 2),
+              const SizedBox(height: 32),
               FilledButton(
                 onPressed: onAcknowledge,
                 child: Text(context.translate.identityCta),

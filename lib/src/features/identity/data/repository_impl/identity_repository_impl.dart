@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
@@ -33,7 +34,14 @@ class IdentityRepositoryImpl with ResultGuard implements IdentityRepository {
         throw NetworkException('You are offline.');
       }
       final fetched = await remote.fetchRandomIdentity();
-      await local.write(roomCode: roomCode, identity: fetched);
+      // best-effort cache write — a cache failure here must not lose the
+      // freshly fetched identity (otherwise the user sees an error after a
+      // successful API call)
+      try {
+        await local.write(roomCode: roomCode, identity: fetched);
+      } catch (e) {
+        debugPrint('[identity] cache write failed for $roomCode: $e');
+      }
       return ResolvedIdentity(identity: fetched, isFresh: true);
     });
   }

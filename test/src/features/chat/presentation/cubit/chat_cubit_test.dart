@@ -101,4 +101,59 @@ void main() {
       expect(ids, containsAll(['old-29', 'old-30', 'old-35']));
     },
   );
+
+  test(
+    'loadMore advances the cursor and appends the second page',
+    () async {
+      final firstPage = List<MessageEntity>.generate(
+        30,
+        (i) => message('p1-${i + 1}'),
+      );
+      final secondPage = List<MessageEntity>.generate(
+        30,
+        (i) => message('p2-${i + 1}'),
+      );
+
+      final cursor = _StubCursor();
+      var call = 0;
+      when(
+        () => repository.loadMessages(
+          roomCode: any(named: 'roomCode'),
+          pageSize: any(named: 'pageSize'),
+          startAfter: any(named: 'startAfter'),
+        ),
+      ).thenAnswer((invocation) async {
+        call++;
+        if (call == 1) {
+          return Right(
+            PaginatedResult<MessageEntity>(
+              items: firstPage,
+              nextCursor: cursor,
+            ),
+          );
+        }
+        expect(
+          invocation.namedArguments[const Symbol('startAfter')],
+          same(cursor),
+        );
+        return Right(
+          PaginatedResult<MessageEntity>(items: secondPage),
+        );
+      });
+
+      final cubit = buildCubit();
+      addTearDown(cubit.close);
+
+      await cubit.loadInitial();
+      await cubit.loadMore();
+
+      final state = cubit.state as PaginatedListLoaded<MessageEntity>;
+      expect(state.items, hasLength(60));
+      expect(state.items.first.id, 'p1-1');
+      expect(state.items.last.id, 'p2-30');
+      expect(state.hasMore, isFalse);
+    },
+  );
 }
+
+class _StubCursor extends PageCursor {}

@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../../core/network/codecs.dart';
 import '../../domain/entities/room_entity.dart';
 
@@ -18,7 +16,7 @@ class RoomModel extends RoomEntity {
     return RoomModel(
       code: (json['code'] as String?) ?? (json['_id'] as String? ?? ''),
       memberIds: memberIds,
-      createdAt: (json['createdAt'] as Timestamp?)?.toDate(),
+      createdAt: json['createdAt'] as DateTime?,
     );
   }
 }

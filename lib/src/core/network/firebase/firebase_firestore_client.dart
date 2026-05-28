@@ -177,14 +177,21 @@ class FirebaseFirestoreClient implements FirestoreClient {
     }
   }
 
-  /// Injects `_id` and `_hasPendingWrites` into the map so decoders can
-  /// read them without us widening the [Decoder<T>] signature.
+  /// Injects `_id` and `_hasPendingWrites` into the map and converts
+  /// Firestore `Timestamp` values to `DateTime` at the boundary so DTOs
+  /// don't need to import `cloud_firestore`.
   Map<String, dynamic> _inject(
     String id,
     Map<String, dynamic>? data,
     SnapshotMetadata metadata,
   ) {
-    final out = Map<String, dynamic>.from(data ?? const {});
+    final out = <String, dynamic>{};
+    if (data != null) {
+      for (final entry in data.entries) {
+        final value = entry.value;
+        out[entry.key] = value is Timestamp ? value.toDate() : value;
+      }
+    }
     out['_id'] = id;
     out['_hasPendingWrites'] = metadata.hasPendingWrites;
     return out;
