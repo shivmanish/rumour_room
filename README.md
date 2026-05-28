@@ -148,5 +148,5 @@ flutter build apk --release
 
 ## Demo Video
 
-See the walkthrough attached to the same release:
-[v1.0.0+1 release](https://github.com/shivmanish/rumour_room/releases/tag/v1.0.0%2B1)
+Full walkthrough on Google Drive:
+[Watch the demo](https://drive.google.com/file/d/1Ymb_zQeTpmRw3YgVWwNIv5XL2nx2d0hZ/view?usp=sharing)
