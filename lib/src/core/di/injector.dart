@@ -8,6 +8,12 @@ import '../network/rest/rest_client.dart';
 import '../services/connectivity_plus_service.dart';
 import '../services/connectivity_service.dart';
 import '../services/local_storage_service.dart';
+import '../../features/identity/data/datasource/identity_local_datasource.dart';
+import '../../features/identity/data/datasource/identity_remote_datasource.dart';
+import '../../features/identity/data/repository_impl/identity_repository_impl.dart';
+import '../../features/identity/domain/repository/identity_repository.dart';
+import '../../features/identity/domain/usecases/get_or_fetch_identity_usecase.dart';
+import '../../features/identity/presentation/cubit/identity_cubit.dart';
 import '../../features/join_room/data/datasource/room_datasource.dart';
 import '../../features/join_room/data/repository_impl/room_repository_impl.dart';
 import '../../features/join_room/domain/repository/room_repository.dart';
@@ -20,6 +26,7 @@ final sl = GetIt.instance;
 Future<void> initInjector({required LocalStorageService storage}) async {
   _registerCore(storage: storage);
   _registerJoinRoom();
+  _registerIdentity();
 }
 
 void _registerCore({required LocalStorageService storage}) {
@@ -47,5 +54,28 @@ void _registerJoinRoom() {
     )
     ..registerFactory<JoinRoomCubit>(
       () => JoinRoomCubit(joinOrCreateUseCase: sl()),
+    );
+}
+
+void _registerIdentity() {
+  sl
+    ..registerLazySingleton<IdentityRemoteDataSource>(
+      () => IdentityRemoteDataSourceImpl(sl<RestClient>()),
+    )
+    ..registerLazySingleton<IdentityLocalDataSource>(
+      () => IdentityLocalDataSourceImpl(sl<LocalStorageService>()),
+    )
+    ..registerLazySingleton<IdentityRepository>(
+      () => IdentityRepositoryImpl(
+        remote: sl(),
+        local: sl(),
+        connectivity: sl<ConnectivityService>(),
+      ),
+    )
+    ..registerLazySingleton<GetOrFetchIdentityUseCase>(
+      () => GetOrFetchIdentityUseCase(sl()),
+    )
+    ..registerFactory<IdentityCubit>(
+      () => IdentityCubit(getOrFetchUseCase: sl()),
     );
 }
