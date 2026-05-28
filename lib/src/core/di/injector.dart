@@ -8,6 +8,11 @@ import '../network/rest/rest_client.dart';
 import '../services/connectivity_plus_service.dart';
 import '../services/connectivity_service.dart';
 import '../services/local_storage_service.dart';
+import '../../features/chat/data/datasource/chat_datasource.dart';
+import '../../features/chat/data/repository_impl/chat_repository_impl.dart';
+import '../../features/chat/domain/repository/chat_repository.dart';
+import '../../features/chat/domain/usecases/load_messages_usecase.dart';
+import '../../features/chat/domain/usecases/send_message_usecase.dart';
 import '../../features/identity/data/datasource/identity_local_datasource.dart';
 import '../../features/identity/data/datasource/identity_remote_datasource.dart';
 import '../../features/identity/data/repository_impl/identity_repository_impl.dart';
@@ -27,6 +32,7 @@ Future<void> initInjector({required LocalStorageService storage}) async {
   _registerCore(storage: storage);
   _registerJoinRoom();
   _registerIdentity();
+  _registerChat();
 }
 
 void _registerCore({required LocalStorageService storage}) {
@@ -77,5 +83,23 @@ void _registerIdentity() {
     )
     ..registerFactory<IdentityCubit>(
       () => IdentityCubit(getOrFetchUseCase: sl()),
+    );
+}
+
+void _registerChat() {
+  // ChatCubit is built inline by ChatScreen — it needs roomCode + identity
+  // at construction, so it can't be registered here.
+  sl
+    ..registerLazySingleton<ChatDataSource>(
+      () => ChatFirestoreDataSourceImpl(sl<FirestoreClient>()),
+    )
+    ..registerLazySingleton<ChatRepository>(
+      () => ChatRepositoryImpl(dataSource: sl()),
+    )
+    ..registerLazySingleton<LoadMessagesUseCase>(
+      () => LoadMessagesUseCase(sl()),
+    )
+    ..registerLazySingleton<SendMessageUseCase>(
+      () => SendMessageUseCase(sl()),
     );
 }
