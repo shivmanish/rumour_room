@@ -135,14 +135,18 @@ flutter test
 
 ## APK
 
-Pending final stable build.
+Download the signed APK from the GitHub release:
 
-Expected location after building:
+**[v1.0.0+1 release](https://github.com/shivmanish/rumour_room/releases/tag/v1.0.0%2B1)**
 
-```text
-build/app/outputs/flutter-apk/app-release.apk
+To rebuild locally:
+
+```bash
+flutter build apk --release
+# output: build/app/outputs/flutter-apk/app-release.apk
 ```
 
 ## Demo Video
 
-Pending final stable recording.
+See the walkthrough attached to the same release:
+[v1.0.0+1 release](https://github.com/shivmanish/rumour_room/releases/tag/v1.0.0%2B1)
