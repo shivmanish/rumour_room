@@ -1,0 +1,45 @@
+name: rumour_room
+description: "Rumour — anonymous room-code chat."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  get_it: ^7.7.0
+  dio: ^5.7.0
+  firebase_core: ^3.6.0
+  cloud_firestore: ^5.4.4
+  firebase_messaging: ^15.1.3
+  shared_preferences: ^2.3.2
+  connectivity_plus: ^6.0.5
+  auto_route: ^10.0.0
+  intl: ^0.20.2
+  flutter_svg: ^2.0.10+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.4
+
+  build_runner: ^2.4.13
+  auto_route_generator: ^10.2.4
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/icons/

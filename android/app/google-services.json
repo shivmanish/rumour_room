@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036144322264",
+    "project_id": "rumour-room",
+    "storage_bucket": "rumour-room.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036144322264:android:1a4a78e62870693e7cd9ad",
+        "android_client_info": {
+          "package_name": "com.manishsharma.rumour_room"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuP-A-HMykWS0S6bv7FkdPrIdcIhgUIFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

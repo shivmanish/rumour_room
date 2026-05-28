@@ -1,0 +1,36 @@
+{
+  "@@locale": "hi",
+
+  "appName": "रूमर",
+
+  "english": "English",
+  "hindi": "हिन्दी",
+
+  "joinTitle": "रूम में शामिल हों",
+  "joinSubtitle": "एनॉन चैट रूम में शामिल होने के लिए कोड दर्ज करें",
+  "joinCreateRoom": "नया रूम बनाएँ",
+
+  "identityCaption": "इस रूम में आप हैं",
+  "identityHelper": "यह आपकी गुमनाम पहचान है, जो केवल इस रूम के सदस्यों को दिखती है।",
+  "identityCta": "स्वीकार करें और जारी रखें",
+
+  "chatInputHint": "संदेश लिखें",
+  "chatRoomTitle": "रूम #{code}",
+  "chatMembersCount": "{count, plural, =1{1 सदस्य} other{{count} सदस्य}}",
+  "chatDateToday": "आज",
+  "chatDateYesterday": "कल",
+  "chatYouLabel": "आप",
+  "chatAnonymous": "गुमनाम चैट",
+  "chatEmptyTitle": "अफ़वाह शुरू करें",
+  "chatEmptySubtitle": "इस रूम में पहला नमस्ते भेजें।",
+
+  "errGeneric": "कुछ गड़बड़ हो गई। कृपया पुनः प्रयास करें।",
+  "errNoNetwork": "आप ऑफ़लाइन हैं।",
+  "errInvalidRoomCode": "6 अंकों का वैध रूम कोड दर्ज करें।",
+  "errRoomNotFound": "इस कोड का कोई रूम नहीं मिला। कोड जाँचें या नया रूम बनाएँ।",
+
+  "identityErrorOfflineTitle": "आप ऑफ़लाइन हैं",
+  "identityErrorOfflineSubtitle": "हम इस रूम के लिए आपकी गुमनाम पहचान नहीं ला सके। कनेक्शन जाँचें और दोबारा कोशिश करें।",
+  "identityErrorGenericTitle": "पहचान लोड नहीं हो सकी",
+  "actionRetry": "पुनः प्रयास करें"
+}

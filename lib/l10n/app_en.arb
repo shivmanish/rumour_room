@@ -1,0 +1,120 @@
+{
+  "@@locale": "en",
+
+  "appName": "Rumour",
+  "@appName": {
+    "description": "The application name"
+  },
+
+  "english": "English",
+  "@english": {
+    "description": "English language name"
+  },
+  "hindi": "हिन्दी",
+  "@hindi": {
+    "description": "Hindi language name"
+  },
+
+  "joinTitle": "Join A Room",
+  "@joinTitle": {
+    "description": "Title on the room-code entry screen"
+  },
+  "joinSubtitle": "Enter the code to join the anon chat room",
+  "@joinSubtitle": {
+    "description": "Subtitle on the room-code entry screen"
+  },
+  "joinCreateRoom": "Create a new room",
+  "@joinCreateRoom": {
+    "description": "Secondary CTA that lets the user create a fresh room"
+  },
+
+  "identityCaption": "For this room, you are",
+  "@identityCaption": {
+    "description": "Small caption above the gradient identity name"
+  },
+  "identityHelper": "This is your anonymous identifier, visible only to others in this room.",
+  "@identityHelper": {
+    "description": "Helper line beneath the identity name"
+  },
+  "identityCta": "Acknowledge and continue",
+  "@identityCta": {
+    "description": "Primary CTA that closes the identity reveal sheet"
+  },
+
+  "chatInputHint": "Type a message",
+  "@chatInputHint": {
+    "description": "Placeholder inside the chat input field"
+  },
+  "chatRoomTitle": "Room #{code}",
+  "@chatRoomTitle": {
+    "description": "App bar title shown on the chat screen",
+    "placeholders": {
+      "code": { "type": "String" }
+    }
+  },
+  "chatMembersCount": "{count, plural, =1{1 member} other{{count} members}}",
+  "@chatMembersCount": {
+    "description": "Member count line under the room title",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "chatDateToday": "Today",
+  "@chatDateToday": {
+    "description": "Date separator label for messages sent today"
+  },
+  "chatDateYesterday": "Yesterday",
+  "@chatDateYesterday": {
+    "description": "Date separator label for messages sent yesterday"
+  },
+  "chatYouLabel": "You",
+  "@chatYouLabel": {
+    "description": "Label shown above the current user's own bubble"
+  },
+  "chatAnonymous": "Anonymous chat",
+  "@chatAnonymous": {
+    "description": "Subtitle shown in the chat app bar when no members have joined yet"
+  },
+  "chatEmptyTitle": "Start the rumour",
+  "@chatEmptyTitle": {
+    "description": "Empty-state title shown when a chat room has no messages yet"
+  },
+  "chatEmptySubtitle": "Be the first to say hello in this room.",
+  "@chatEmptySubtitle": {
+    "description": "Empty-state subtitle on the chat screen"
+  },
+
+  "errGeneric": "Something went wrong. Please try again.",
+  "@errGeneric": {
+    "description": "Fallback error message"
+  },
+  "errNoNetwork": "You are offline.",
+  "@errNoNetwork": {
+    "description": "Banner shown when the device has no connectivity"
+  },
+  "errInvalidRoomCode": "Enter a valid 6-digit room code.",
+  "@errInvalidRoomCode": {
+    "description": "Inline error for the join screen when the entered code is malformed"
+  },
+  "errRoomNotFound": "No room with that code. Double-check or create a new one.",
+  "@errRoomNotFound": {
+    "description": "Inline error for the join screen when the room doesn't exist"
+  },
+
+  "identityErrorOfflineTitle": "You're offline",
+  "@identityErrorOfflineTitle": {
+    "description": "Title of the no-internet card shown when the identity API call fails"
+  },
+  "identityErrorOfflineSubtitle": "We couldn't fetch your anonymous identity for this room. Check your connection and try again.",
+  "@identityErrorOfflineSubtitle": {
+    "description": "Subtitle of the no-internet card on the identity error screen"
+  },
+  "identityErrorGenericTitle": "Couldn't load your identity",
+  "@identityErrorGenericTitle": {
+    "description": "Title shown when identity loading fails for a non-network reason"
+  },
+  "actionRetry": "Retry",
+  "@actionRetry": {
+    "description": "Retry button label"
+  }
+}
